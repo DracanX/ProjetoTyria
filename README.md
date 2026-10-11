@@ -4,8 +4,6 @@ Este é um módulo de tradução para o Text Translator, o addon do Nexus criado
 
 Este módulo traz o jogo para português
 
-Módulo de tradução local de inglês para português para o addon **Text Translator**, do Nexus. O texto do jogo é processado no computador; não é enviado a serviços de tradução online.
-
 > O modelo disponível é inglês–português (`en → pt`), não um modelo específico do Brasil (`pt-BR`). O glossário e as regras do projeto adaptam nomes e plurais, mas algumas frases podem soar como português europeu.
 
 ## Compilar no Windows
