@@ -4,15 +4,6 @@ Módulo de tradução local de inglês para português para o addon **Text Trans
 
 > O modelo disponível é inglês–português (`en → pt`), não um modelo específico do Brasil (`pt-BR`). O glossário e as regras do projeto adaptam nomes e plurais, mas algumas frases podem soar como português europeu.
 
-## Publicar esta pasta no GitHub
-
-1. No GitHub, crie um repositório vazio (público ou privado); não é preciso configurar Git no computador.
-2. Abra o repositório e escolha **Add file → Upload files**.
-3. Arraste o conteúdo desta pasta, incluindo `.gitignore`, mantendo as subpastas, e confirme que `README.md`, `src`, `tests`, `tools` e `glossary` aparecem antes de enviar.
-4. Escreva uma mensagem, como `Primeira versão do tradutor PT-BR`, e clique em **Commit changes**.
-
-Os pesos do modelo e os arquivos gerados de compilação não estão nesta pasta, então não serão enviados ao GitHub.
-
 ## Compilar no Windows
 
 Requisitos: Windows 10/11 de 64 bits, Python 3.12 de 64 bits e internet para baixar as dependências e o modelo uma única vez.
