@@ -77,12 +77,14 @@ def install_model(output: Path) -> None:
 
 def main() -> None:
     project_root = Path(__file__).resolve().parents[1]
+    default_model_dir = (project_root / "nexus_build" / "addons" / "text_translator" /
+                         "modules" / "local_translator_ptbr_perf" / "PT_BR" / "model")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--output",
         type=Path,
-        default=project_root / "PT_BR" / "model",
-        help="model package directory (default: PT_BR\\model)",
+        default=default_model_dir,
+        help="model package directory (default: inside the Nexus build output)",
     )
     args = parser.parse_args()
     install_model(args.output)

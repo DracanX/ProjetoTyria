@@ -1,3 +1,3 @@
-name = "Tradutor PT-BR para Guild Wars 2"
+name = "Tradutor PT-BR para Guild Wars 2 (Desempenho)"
 command = "Local_Translator_PTBR.exe"
 args = ["--no-update"]

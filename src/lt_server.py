@@ -40,6 +40,7 @@ GLOSSARY_URL = raw_url("glossary/glossary_pt-br.json")
 # this single file is still published for the modules up to v0.4.
 PATCH_URL = raw_url("patch/patch_pt-br.json")
 UPDATE_INTERVAL = 15 * 60  # seconds between two checks for a new glossary or patch
+TRANSLATION_BATCH_SIZE = 24  # maximum queued lines passed to one translation batch
 # Largest glossary or patch accepted (GitHub refuses files over 100 MB). The old limit of 5 MB cut
 # bigger files: the JSON could not be read and the update failed with only "update skipped".
 MAX_DOWNLOAD = 100_000_000
@@ -231,7 +232,7 @@ log = logging.getLogger("lt")
 
 
 def app_dir() -> Path:
-    """Folder that contains the exe (for the module: addons\\text_translator\\modules\\local_translator_ptbr)."""
+    """Folder that contains the exe (for the performance module: local_translator_ptbr_perf)."""
     if getattr(sys, "frozen", False):
         return Path(sys.executable).resolve().parent
     return Path(__file__).resolve().parent
@@ -945,7 +946,7 @@ class CT2Translator:
         results = self.tr.translate_batch(
             tokens,
             replace_unknowns=True,
-            max_batch_size=24,
+            max_batch_size=TRANSLATION_BATCH_SIZE,
             batch_type="tokens",
             beam_size=2,
             length_penalty=0.2,
@@ -965,7 +966,7 @@ class Engine:
     queue and reads the results from the cache.
     """
 
-    BATCH = 24
+    BATCH = TRANSLATION_BATCH_SIZE
     MAX_FAILURES = 2  # failed batches before a line is left in English (until restart)
 
     def __init__(self, translator, glossary: Glossary, cache_path: Path | None = None,
@@ -1147,12 +1148,24 @@ class Engine:
         return re.search(r"[A-Za-z]{2}", TOKEN_RE.sub("", line)) is not None
 
     # -- worker side ------------------------------------------------------------------------
+    def _take_batch(self) -> list[str]:
+        """Take recent lines first while advancing the oldest line once per full batch.
+
+        Called with cv held. The queue's left side contains the newest requests.
+        """
+        batch_size = min(self.BATCH, len(self.queue))
+        if batch_size == self.BATCH and len(self.queue) > batch_size:
+            batch = [self.queue.popleft() for _ in range(batch_size - 1)]
+            batch.append(self.queue.pop())
+            return batch
+        return [self.queue.popleft() for _ in range(batch_size)]
+
     def _work(self) -> None:
         while True:
             with self.cv:
                 while not self.queue or self.translator is None:
                     self.cv.wait(1.0)
-                batch = [self.queue.popleft() for _ in range(min(self.BATCH, len(self.queue)))]
+                batch = self._take_batch()
                 gen = self.gen
             try:
                 results = self._translate_lines(batch)
