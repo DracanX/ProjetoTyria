@@ -1,0 +1,3 @@
+name = "Módulo de Tradução Local PTBR 1.0"
+command = "Local_Translator_PT_BR.exe"
+args = ["--lang", "pt_br"]

@@ -1,0 +1,20 @@
+{
+  "format": 1,
+  "assets": {
+    "glossary": {
+      "version": 1,
+      "path": "glossary/glossary_pt_br.json",
+      "sha256": "10e213635e206a67bfc11e97a68bc59fdb998cc7edb974dfda5270ec34718389"
+    },
+    "plural": {
+      "version": 1,
+      "path": "plural/plural_pt_br.json",
+      "sha256": "689f3427cf00a82ec1116548b41ca351876de5940ef818230ed05f93bc6c9d6f"
+    },
+    "patch": {
+      "version": 1,
+      "path": "patch/pt_br/index.json",
+      "sha256": "5b0987e50ab3b90b7a416dc5396ecd2262911ce5ebed2a093963406ce14004f3"
+    }
+  }
+}

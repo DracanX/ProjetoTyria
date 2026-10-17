@@ -1,0 +1,33 @@
+{
+ "format": 1,
+ "version": 1,
+ "glossary": "",
+ "width": 0,
+ "pieces": {
+  "p0000.json": {
+   "sha256": "477ca138d6372d9d12d78150eb1653009875fc43c7bd971acd71b6f106946dfc",
+   "entries": 3950,
+   "size": 302601
+  },
+  "p0001.json": {
+   "sha256": "44b5f158c5de4f09bfd971e73dcd556f4101e213ff55fee1c0f60f3080eb8f50",
+   "entries": 3635,
+   "size": 302011
+  },
+  "p0002.json": {
+   "sha256": "8cdf000ff4434a0a9e9350369bdb79a06e57d188b732661efd5372ae05dd5641",
+   "entries": 3736,
+   "size": 302584
+  },
+  "p0003.json": {
+   "sha256": "bbcf0802906c1625d2eb0263fafa15d3ff0f02fd5aaf826d65e9848c0a0327f4",
+   "entries": 3591,
+   "size": 302605
+  },
+  "p0004.json": {
+   "sha256": "107fc6008f85d8c40cb5f0b44177f1479fd8c64af6882817bc0534ff33b59f37",
+   "entries": 2237,
+   "size": 192880
+  }
+ }
+}
