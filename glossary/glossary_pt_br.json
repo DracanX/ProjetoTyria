@@ -1,0 +1,7 @@
+{
+  "_comment": "exact = substituições de string inteira; terms = nomes protegidos/traduzidos dentro de frases (palavras inteiras; palavras únicas são sensíveis a maiúsculas/minúsculas, termos de duas ou mais palavras também correspondem em minúsculas ou apenas com a primeira letra maiúscula) patterns = regras de linha inteira para nomes de itens, {X} = as palavras de prefixo.",
+  "exact": {},
+  "terms": {},
+  "patterns": {},
+  "feminine": {}
+}

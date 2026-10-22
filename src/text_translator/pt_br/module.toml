@@ -1,0 +1,3 @@
+name = "Tradução Brasileira"
+command = "Tradução Brasileira.exe"
+args = ["--lang", "pt_br", "--no-update",]

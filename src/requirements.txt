@@ -1,0 +1,3 @@
+ctranslate2>=4.0
+sentencepiece>=0.2
+xxhash>=3.0
